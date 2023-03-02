@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="665.0" prefWidth="1089.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Roadrevel.gui.AjouterReportController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff4e4" height="675.0" layoutX="-27.0" layoutY="-10.0" stroke="#0d0d0c" strokeType="INSIDE" width="1122.0" />
+      <Text layoutX="14.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REPORT" textAlignment="CENTER" wrappingWidth="227.7366943359375">
+         <font>
+            <Font name="Gabriola" size="55.0" />
+         </font>
+      </Text>
+      <Label layoutX="14.0" layoutY="100.0" text="Votre Nom :">
+         <font>
+            <Font name="Gabriola" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="176.0" text="Sujet :">
+         <font>
+            <Font name="Gabriola" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="11.0" layoutY="409.0" text="Description :">
+         <font>
+            <Font name="Gabriola" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="13.0" layoutY="259.0" text="Participation :">
+         <font>
+            <Font name="Gabriola" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="19.0" layoutY="333.0" text="Localisation :">
+         <font>
+            <Font name="Gabriola" size="36.0" />
+         </font>
+      </Label>
+      <Line endX="968.0" layoutX="105.0" layoutY="74.0" startX="-100.0" strokeWidth="5.0" />
+      <TextField fx:id="tfTourist_name" layoutX="13.0" layoutY="145.0" prefHeight="31.0" prefWidth="215.0" />
+      <TextField fx:id="tfReport_subject" layoutX="13.0" layoutY="221.0" prefHeight="31.0" prefWidth="215.0" />
+      <TextField fx:id="tfInvolvment" layoutX="13.0" layoutY="302.0" prefHeight="31.0" prefWidth="215.0" />
+      <TextField fx:id="tfincident_location" layoutX="13.0" layoutY="378.0" prefHeight="31.0" prefWidth="215.0" />
+      <TextArea fx:id="taReport_description" layoutX="13.0" layoutY="454.0" prefHeight="193.0" prefWidth="215.0" />
+      <Button fx:id="Ajouter" layoutX="983.0" layoutY="602.0" mnemonicParsing="false" onAction="#AjoutR" prefHeight="45.0" prefWidth="85.0" text="Submit">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TableView fx:id="report" layoutX="331.0" layoutY="123.0" prefHeight="455.0" prefWidth="737.0">
+         <columns>
+            <TableColumn fx:id="col_tfTourist_name" prefWidth="92.0" text="Nom" />
+            <TableColumn fx:id="coltfReport_subject" prefWidth="86.0" text="Sujet" />
+            <TableColumn fx:id="coltfInvolvment" prefWidth="141.0" text="Participation" />
+            <TableColumn fx:id="coltfincident_location" prefWidth="125.0" text="Localisation" />
+            <TableColumn fx:id="coltaReport_description" prefWidth="215.0" text="Description" />
+         </columns>
+      </TableView>
+      <Button fx:id="refresh" layoutX="1002.0" layoutY="92.0" mnemonicParsing="false" onAction="#Refresh" text="refresh" />
+   </children>
+</AnchorPane>
