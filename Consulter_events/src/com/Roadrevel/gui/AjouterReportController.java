@@ -45,6 +45,8 @@ public class AjouterReportController implements Initializable {
     @FXML
     private TextField tfReport_subject;
     @FXML
+    private TextField tfType;
+    @FXML
     private TextField tfTourist_name;
     @FXML
     private TextArea taReport_description;
@@ -54,7 +56,6 @@ public class AjouterReportController implements Initializable {
     private TextField tfincident_location;
     @FXML
     private Button Ajouter;
-    @FXML
     private TableView<Report> report;
     @FXML
     private TableColumn<Report, String> col_tfTourist_name;
@@ -67,7 +68,11 @@ public class AjouterReportController implements Initializable {
     @FXML
     private TableColumn<Report, String> coltaReport_description;
     @FXML
+    private TableColumn<Report, String> col_tfType;
+    @FXML
     private Button refresh;
+    
+    
 
     /**
      * Initializes the controller class.
@@ -90,10 +95,11 @@ public class AjouterReportController implements Initializable {
         
         String Tourist_name = tfTourist_name.getText();
         String Report_subject = tfReport_subject.getText();
+        String Type=tfType.getText();
         String Report_description = taReport_description.getText();
         String Involvment = tfInvolvment.getText();
         String incident_location = tfincident_location.getText();
-        if (Tourist_name.isEmpty() || Report_subject.isEmpty() || Report_description.isEmpty() ||Involvment.isEmpty() ||incident_location.isEmpty() ){
+        if (Tourist_name.isEmpty() || Report_subject.isEmpty() || Type.isEmpty() || Report_description.isEmpty() ||Involvment.isEmpty() ||incident_location.isEmpty() ){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("tous les chapms doit etre remplir");
@@ -101,14 +107,16 @@ public class AjouterReportController implements Initializable {
             
         }else {
         ServiceReport r = new ServiceReport();
-        r.ajouter(new Report(tfTourist_name.getText(),tfReport_subject.getText(), taReport_description.getText(),tfInvolvment.getText(),tfincident_location.getText()));
+        r.ajouter(new Report(tfTourist_name.getText(),tfReport_subject.getText(), tfType.getText(), taReport_description.getText(),tfInvolvment.getText(),tfincident_location.getText()));
         JOptionPane.showMessageDialog(null, "report ajoutée !");
-        }
         tfTourist_name.clear();
         tfReport_subject.clear();
+        tfType.clear();
         taReport_description.clear();
         tfInvolvment.clear();
         tfincident_location.clear();
+        }
+        
         
 
     }
@@ -120,8 +128,7 @@ public class AjouterReportController implements Initializable {
              pst = cnx.prepareStatement("SELECT * FROM report");
              result = pst.executeQuery();
              while (result.next()){
-                  data.add(new Report( result.getString("Tourist_name"), result.getString("Report_subject"), result.getString("Report_description"),  result.getString("involvment"), result.getString("incident_location")));
-                  
+                 data.add(new Report( result.getString("Tourist_name"), result.getString("Report_subject"),result.getString("Type"), result.getString("Report_description"), result.getString("Involvment"), result.getString("Incident_location")));                  
              }
          } catch (SQLException ex) {
              System.out.println(ex.getMessage());
@@ -134,7 +141,7 @@ public class AjouterReportController implements Initializable {
              pst = cnx.prepareStatement("SELECT * FROM report");
              result = pst.executeQuery();
              while (result.next()){
-                  data.add(new Report( result.getString("Tourist_name"), result.getString("Report_subject"), result.getString("Report_description"),  result.getString("involvment"), result.getString("incident_location")));
+                  data.add(new Report( result.getString("Tourist_name"), result.getString("Report_subject"),result.getString("Type"), result.getString("Report_description"),  result.getString("involvment"), result.getString("incident_location")));
                   
              }
          } catch (SQLException ex) {
@@ -148,6 +155,7 @@ public class AjouterReportController implements Initializable {
        //SetData();
         col_tfTourist_name.setCellValueFactory(new PropertyValueFactory<>("Tourist_name"));
         coltfReport_subject.setCellValueFactory(new PropertyValueFactory<>("Report_subject"));
+        col_tfType.setCellValueFactory(new PropertyValueFactory<>("Type"));
         coltfincident_location.setCellValueFactory(new PropertyValueFactory<>("incident_location"));
         coltfInvolvment.setCellValueFactory(new PropertyValueFactory<>("involvment"));
         coltaReport_description.setCellValueFactory(new PropertyValueFactory<>("Report_description"));

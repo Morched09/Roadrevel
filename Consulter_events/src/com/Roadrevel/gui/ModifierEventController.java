@@ -80,25 +80,31 @@ public class ModifierEventController implements Initializable {
          SetData();
          
     }    
-    public Integer fromString(String string) { 
-        return Integer.parseInt(string); 
-    }
+    
+    
     
     @FXML
-    private void extract(MouseEvent event) {
-        evenement.setEditable(true);
-    }
-    @FXML
-    private void update(ActionEvent event) {
-        String Event_name = nom.getText();
-        String Location = emplacement.getText();
-        String Event_description = description.getText();
-        ServicesEvents e = new ServicesEvents();
-        e.modifier(new Events(nom.getText(), emplacement.getText(), description.getText() ));
+    private void update(ActionEvent event) throws SQLException{
+        String req = "UPDATE  evenement SET  Location= ?, Event_description= ? WHERE Event_name=?";
+        
+        try{
+            
+                PreparedStatement pst = cnx.prepareStatement(req);
+                pst.setString(3, nom.getText());
+                pst.setString(1, emplacement.getText());
+                pst.setString(2, description.getText());
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "evenement modifiée !");
+                System.out.println("evenement modifiée !");
+                
+        }catch(Exception e){
+            e.printStackTrace();
+                }
+        }
         
         
         
-    }
+    
     @FXML
     public void SetCell() {
         

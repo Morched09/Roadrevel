@@ -104,10 +104,11 @@ public class AjouterEventController implements Initializable {
             ServicesEvents e = new ServicesEvents();
         e.ajouter(new Events(nom.getText(), emplacement.getText(), description.getText() ));
         JOptionPane.showMessageDialog(null, "evenement ajoutée !");
-        }
         nom.clear();
         emplacement.clear();
         description.clear();
+        }
+        
         
         }
      @FXML
@@ -117,6 +118,7 @@ public class AjouterEventController implements Initializable {
         colNom.setCellValueFactory(new PropertyValueFactory<>("Event_name"));
         colEmp.setCellValueFactory(new PropertyValueFactory<>("Location"));
         colDes.setCellValueFactory(new PropertyValueFactory<>("Event_description"));
+        
         
     
 }
@@ -136,6 +138,7 @@ public class AjouterEventController implements Initializable {
          } catch (SQLException ex) {
              System.out.println(ex.getMessage());
          } 
+        
     }
 
     @FXML

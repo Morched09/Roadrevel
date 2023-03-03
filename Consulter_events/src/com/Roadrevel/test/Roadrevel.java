@@ -20,7 +20,7 @@ public class Roadrevel {
         // TODO code application logic here
         ServiceReport r = new ServiceReport();
         ServicesEvents e = new ServicesEvents();
-        r.ajouter(new Report("jack","i get hitten buy a tree","aaaaaaa","aaaaaaa","aaaaaaaaa"));
+        r.ajouter(new Report("sam","i get hitten buy a tree","place","aaaaaaa","aaaaaaa","aaaaaaaaa"));
         
         //e.supprimer(new Events("new"));
         //System.out.println(r.afficher());
